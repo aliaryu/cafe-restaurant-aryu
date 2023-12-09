@@ -8,7 +8,7 @@
 }
 
 :root {
-    --shadow: 1px 1px 10px rgba(0, 0, 0, 0.658);
+    --shadow: 1px 1px 5px rgb(0, 0, 0);
   }
   
 * {
@@ -17,11 +17,17 @@
     font-size: 20px;
 }
 
+.custom-shadow {
+    text-shadow: var(--shadow);
+}
+
+.font-30 {
+    font-size: 30px;
+}
+
 .f-sayeh {
     font-family: "sayeh";
-    font-size: 30px;
     font-weight: bold;
-    text-shadow: var(--shadow);
 }
 
 
@@ -34,4 +40,19 @@
     height: 30px;
     width: 30px;
     margin-right: 10px;
+}
+
+.bg-opacity-half {
+    background-color: rgba(255, 255, 255, 0.089);
+}
+
+#header {
+    background-image: url("../images/background-cafe.jpeg");
+    background-position: center top;
+    background-size: cover;
+    background-color: #464646;
+}
+
+.delete-outline:focus {
+    box-shadow: none;
 }
