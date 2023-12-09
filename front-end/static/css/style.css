@@ -51,7 +51,8 @@
     position: relative;
     top: -10px;
 
-    animation: rotate 4s forwards infinite; 
+    animation: rotate 4s forwards infinite 2s; 
+
 }
 
 @keyframes rotate {
@@ -83,3 +84,5 @@
 .delete-outline:focus {
     box-shadow: none;
 }
+
+g
