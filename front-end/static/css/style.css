@@ -39,7 +39,6 @@
     font-weight: bold;
 }
 
-
 #logo {
     background-image: url("../images/coffee-cup.png");
     background-position: center center;
@@ -51,6 +50,23 @@
     margin-right: 10px;
     position: relative;
     top: -10px;
+
+    animation: rotate 4s forwards infinite; 
+}
+
+@keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    20% {
+        transform: rotate(25deg)
+    }
+    40% {
+        transform: rotate(-5deg);
+    }
+    60% {
+        transform: rotate(0deg);
+    }
 }
 
 .bg-opacity-half {
