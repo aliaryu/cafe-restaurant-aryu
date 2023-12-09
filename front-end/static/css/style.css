@@ -41,14 +41,16 @@
 
 
 #logo {
-    background-image: url("../images/latte-art.png");
+    background-image: url("../images/coffee-cup.png");
     background-position: center center;
     background-size: cover;              
     display: inline-block;
     text-align: center;
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
     margin-right: 10px;
+    position: relative;
+    top: -10px;
 }
 
 .bg-opacity-half {
