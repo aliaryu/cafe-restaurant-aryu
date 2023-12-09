@@ -1,0 +1,28 @@
+@font-face {
+    font-family: "sayeh";
+    src: url("../fonts/Mj\ Sayeh\ 2.ttf");
+}
+
+:root {
+    --shadow: 1px 1px 10px rgba(0, 0, 0, 0.658);
+  }
+  
+
+.f-sayeh {
+    font-family: "sayeh";
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow: var(--shadow);
+}
+
+
+#logo {
+    background-image: url("../images/latte-art.png");
+    background-position: center center;
+    background-size: cover;              
+    display: inline-block;
+    text-align: center;
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+}
