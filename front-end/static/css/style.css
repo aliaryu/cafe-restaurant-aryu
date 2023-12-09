@@ -2,11 +2,20 @@
     font-family: "sayeh";
     src: url("../fonts/Mj\ Sayeh\ 2.ttf");
 }
+@font-face {
+    font-family: "calibri";
+    src: url("../fonts/Calibri.ttf");
+}
 
 :root {
     --shadow: 1px 1px 10px rgba(0, 0, 0, 0.658);
   }
   
+* {
+    font-family: "calibri";
+    font-weight: bold;
+    font-size: 20px;
+}
 
 .f-sayeh {
     font-family: "sayeh";
