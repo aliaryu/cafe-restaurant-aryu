@@ -15,11 +15,14 @@
     font-family: "calibri";
     font-weight: bold;
     font-size: 20px;
-}
 
-.custom-shadow {
     text-shadow: var(--shadow-black);
 }
+
+body {
+    background-color: black;
+}
+
 
 .font-30 {
     font-size: 30px;
@@ -36,11 +39,13 @@
 .f-sayeh {
     font-family: "sayeh";
     font-weight: bold;
+    text-shadow: var(--shadow-black);
 }
 
 .f-calibri {
     font-family: "calibri";
     font-weight: bold;
+    text-shadow: var(--shadow-black);
 }
 
 #logo {
@@ -55,7 +60,7 @@
     position: relative;
     top: -10px;
 
-    animation: rotate 4s forwards infinite 2s; 
+    animation: rotate 4s forwards infinite 2s;
 }
 
 @keyframes rotate {
