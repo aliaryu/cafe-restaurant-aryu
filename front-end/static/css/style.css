@@ -137,4 +137,36 @@ body {
     height: 100%;
     width: 100%;
     top: 0;
+    background-color: rgba(0, 0, 0, 0);
+    transition: 0.3s ease;
 }
+
+#div-items > .col {
+    box-shadow: 0 0 0 1px #5c5c5c;
+    margin: -0.3px;
+    position: relative;
+}
+
+.icon-eye {
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0; /* در ابتدا مخفی است */
+    background: url('آدرس-تصویر-آیکون') no-repeat center center; /* آدرس تصویر آیکون را جایگزین کنید */
+    width: 40px; /* عرض آیکون */
+    height: 40px; /* ارتفاع آیکون */
+    background-size: cover; /* تنظیمات سایز تصویر */
+    transition: opacity 0.3s ease; /* انیمیشن برای تغییر شفافیت */
+}
+
+.absolute-items:hover > .icon-eye {
+    opacity: 1;
+}
+
+.absolute-items:hover {
+    background-color: rgba(0, 0, 0, 0.514);
+    /* cursor: pointer; */
+}
+
