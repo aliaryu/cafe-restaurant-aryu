@@ -164,3 +164,18 @@ body {
     background-color: rgba(0, 0, 0, 0.514);
 }
 
+#background-aboutus {
+    background-image: url("../images/background-aboutus.jpg");
+    background-position: center top;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+}
+
+.background-glass {
+    background-color: rgba(0, 0, 0, 0.76)
+}
+
+.custom-border {
+    border: 1px solid #5c5c5c;
+}
