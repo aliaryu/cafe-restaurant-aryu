@@ -92,3 +92,22 @@ body {
 .delete-outline:focus {
     box-shadow: none;
 }
+
+.menu-animation {
+    animation: shake 4.3s forwards infinite;
+}
+
+@keyframes shake {
+    0% {
+      transform: rotate(0deg);
+    }
+    5% {
+        transform: rotate(3deg)
+    }
+    10% {
+        transform: rotate(-6deg);
+    }
+    15% {
+        transform: rotate(0deg);
+    }
+}
