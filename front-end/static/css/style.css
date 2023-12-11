@@ -123,3 +123,11 @@ body {
 body {
     height: 1000vh;
 }
+
+.absolute-title {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+}
