@@ -111,3 +111,15 @@ body {
         transform: rotate(0deg);
     }
 }
+
+#background-cafe {
+    background-image: url("../images/IMG_8641.webp");
+    /* background-repeat: no-repeat; */
+    background-position: center 1%;
+    background-attachment: fixed;
+    /* background-size: cover; */
+}
+
+body {
+    height: 1000vh;
+}
