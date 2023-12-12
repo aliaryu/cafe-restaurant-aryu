@@ -216,3 +216,11 @@ body {
     margin: 1px;
 }
 
+.custom-img {
+    max-width: 125px;
+}
+
+.text-no-wrap {
+    white-space: nowrap; left: 50%;
+    transform: translateX(-50%);
+}
