@@ -177,7 +177,7 @@ body {
 }
 
 .form-control::placeholder {
-    color: #a0a0a0;
+    color: #ffffff;
 }
 
 #map-responsive {
@@ -205,5 +205,14 @@ body {
     background-attachment: fixed;
     background-size: cover;
     background-color: #464646;
+}
+
+#background-login {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../images/plants-background.jpg");
+    background-position: center top;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+    margin: 1px;
 }
 
