@@ -36,6 +36,10 @@ body {
     font-size: 17px;
 }
 
+.font-15 {
+    font-size: 15px;
+}
+
 .f-sayeh {
     font-family: "sayeh";
     font-weight: bold;
@@ -176,3 +180,26 @@ body {
     border: 1px solid #5c5c5c;
 }
 
+.form-control::placeholder {
+    color: #a0a0a0;
+}
+
+#map-responsive {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#map-responsive iframe {
+    width: 100%;
+    height: 100%;
+}
+
+#address {
+    background-color: rgba(0, 0, 0, 0.753);
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0px 20px;
+}
