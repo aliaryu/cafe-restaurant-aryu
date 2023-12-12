@@ -28,6 +28,10 @@ body {
     font-size: 30px;
 }
 
+.font-25 {
+    font-size: 25px;
+}
+
 .font-20 {
     font-size: 20px;
 }
@@ -116,14 +120,6 @@ body {
     }
 }
 
-#background-cafe {
-    background-image: url("../images/IMG_8641.webp");
-    /* background-repeat: no-repeat; */
-    background-position: center bottom;
-    background-attachment: fixed;
-    /* background-size: cover; */
-}
-
 .absolute-title {
     position: absolute;
     bottom: 0px;
@@ -186,7 +182,6 @@ body {
 
 #map-responsive {
     position: relative;
-    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -203,3 +198,12 @@ body {
     transform: translate(-50%, -50%);
     padding: 0px 20px;
 }
+
+#background-footer {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../images/gif/augustin-cart-gif-lofi-final.gif");
+    background-position: center top;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+}
+

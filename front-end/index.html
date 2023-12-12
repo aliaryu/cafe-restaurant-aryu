@@ -357,7 +357,7 @@
         </div>
     </section>
 
-    
+    <!-- CONTACT US, MAP SECTION -->
     <section class="container text-white my-5">
         <div class="row g-4 g-lg-5 row-cols-1 row-cols-xl-2 justify-content-center">
 
@@ -380,7 +380,7 @@
             </div>
 
             <div class="col pt-2 pt-xl-5" id="map-responsive">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2348.7747705363386!2d46.408768786798674!3d33.639812806375204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sde!4v1702346544649!5m2!1sen!2sde" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe class="custom-border" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2348.7747705363386!2d46.408768786798674!3d33.639812806375204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sde!4v1702346544649!5m2!1sen!2sde" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 
                 <h5 class="font-17 f-calibri py-1 d-md-none font-15" id="address">آدرس کافه رستوران آریو</h5>
                 <div class="carousel-caption d-none d-md-block">
@@ -392,32 +392,58 @@
         </div>
     </section>
 
-
-
     <!-- FOOTER -->
-    <footer class="container-fluid text-white my-5 p-0 bg-opacity-half position-relative" >
-        <div class="container justify-content-center p-5">
+    <footer class="container-fluid text-white my-5 p-0 bg-opacity-half position-relative" id="background-footer">
+        <div class="container justify-content-center py-5">
 
-            <span class="d-block text-center">
-                <a href="#" class="text-white">تماس با ما</a> <i class="bi bi-telephone"></i>
-                |
-                <a href="#" class="text-white">درباره ما</a> <i class="bi bi-info-circle"></i>
-                |
-                <a href="#" class="text-white">توسعه دهنگان</a> <i class="bi bi-file-earmark-code"></i>
-                |
-                <a href="#" class="text-white">سفارش سفارش</a> <i class="bi bi-cart"></i>
-            </span>
+            <div class="row g-4 g-lg-5 row-cols-1 row-cols-xl-2 justify-content-center">
 
-            <span class="d-block text-center text-secondary font-17">
-                ©️ تمامی حقوق نزد علی آریو محفوظ است 🌧
-            </span>
-            <span class="d-block text-center text-secondary font-17">
-                <span style="filter: grayscale(100%); font-size: 13.5px;">🌌</span>
-                کافه رستوران آریو 1402-1430
-                <span style="filter: grayscale(100%); font-size: 14px;">✨</span>
-            </span>
-            <a href="#" class="font-17 text-white btn btn-outline-light px-2 py-1 position-absolute"
-            style="bottom: -21px;"><i class="bi bi-caret-up"></i></a>
+                <!-- LINKS DIV -->
+                <div class="col d-flex justify-content-around">
+                    <ul class="p-3 m-0">
+                        <li class="nav-item mb-2 font-17"><a href="about.html" class="nav-link p-0 text-white">درباره ما</a></li>
+                        <li class="nav-item mb-2 font-17"><a href="contact.html" class="nav-link p-0 text-white">تماس با ما</a></li>
+                        <li class="nav-item mb-2 font-17"><a href="#" class="nav-link p-0 text-white">توسعه دهندگان</a></li>
+                        <li class="nav-item mb-2 font-17"><a href="#" class="nav-link p-0 text-white">حریم خصوصی</a></li>
+                    </ul>
+
+                    <ul class="p-3 m-0">
+                        <li class="nav-item mb-2 font-17"><a href="about.html" class="nav-link p-0 text-white">سفارش آنلاین</a></li>
+                        <li class="nav-item mb-2 font-17"><a href="contact.html" class="nav-link p-0 text-white">دسته بندی ها</a></li>
+                        <li class="nav-item mb-2 font-17"><a href="#" class="nav-link p-0 text-white">تخفیف خورده ها</a></li>
+                        <li class="nav-item mb-2 font-17"><a href="#" class="nav-link p-0 text-white">رویداد های آریو</a></li>
+                    </ul>
+                </div>
+
+                <!-- NEWSLETTER DIVE -->
+                <div class="col mt-2 mt-xl-5 d-flex justify-content-center align-items-center">
+                    <div class="w-100">
+                        <h2 class="font-25 f-calibri">عضویت در خبرنامه</h2>
+                        <p class="f-calibri font-17">از آخرین رویداد ها و کد های تخفیف با خبر شوید.</p>
+                        <form class="d-flex flex-column flex-sm-row gap-2">
+                            <input type="email" class="form-control bg-transparent text-white font-17 fw-bold" placeholder="ایمیل شما">
+                            <button type="submit" class="d-flex justify-content-center align-items-center btn btn-outline-light bg-transparent text-white font-17 fw-bold">
+                                عضویت 
+                                <i class="bi bi-bookmark font-15 mx-1"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="d-flex  flex-row justify-content-between pt-4 mt-4 border-top">
+                <p class="font-17">© پاییز 1402 ، ساخته شده توسط:
+                    <a class="font-17 text-white " href="https://github.com/aliaryu/">aliaryu@</a>
+                </p>
+                <span class="d-flex align-items-center">
+                    <i class="bi bi-stars font-25"></i>
+                    <img src="static/images/coffee-cup.png" alt="" width="30px" height="30px">
+                </span>
+                
+            </div>
+
+            <a href="#" class="font-17 text-white btn btn-outline-light px-2 py-1 position-absolute" style="bottom: -21px;"><i class="bi bi-caret-up"></i></a>
 
         </div>
     </footer>
