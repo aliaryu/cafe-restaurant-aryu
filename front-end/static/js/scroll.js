@@ -8,7 +8,7 @@ scrollToTop.addEventListener('click', function() {
 });
 
 function scrollToTag(element) {
-    var subject = element.getAttribute('subject');
-    var target = document.querySelector('[target="' + subject + '"]');
+    var cat_id = element.getAttribute('cat_id');
+    var target = document.querySelector('[target="' + cat_id + '"]');
     target.scrollIntoView({ behavior: 'smooth' });
 }
