@@ -232,3 +232,11 @@ body {
     white-space: nowrap; left: 50%;
     transform: translateX(-50%);
 }
+
+#success-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+    width: 200px;
+}
