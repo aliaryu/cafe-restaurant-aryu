@@ -90,7 +90,8 @@
                             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
                                 <div class="col mb-3">
-                                    <a class="card h-100 text-decoration-none bg-black" href="#">
+                                    <a class="card h-100 text-decoration-none bg-black" href="#"
+                                    onclick="scrollToTag(this); return false;" subject="1">
                         
                                         <img class="card-img-top rounded-circle bg-black" src="static/images/menu-icons-white/fast-food.png" alt="...">
                                         <div class="card-body p-1">
@@ -190,7 +191,32 @@
 
     </section>
 
-    
+        <!-- ITEMS SECTION -->
+        <section class="container-fluid text-white mt-5 p-0">
+
+            <div class="custom-border border-start-0 border-end-0 border-bottom-0 py-3 position-relative">
+                <h2 class="font-25 f-calibri text-center position-absolute" target="1"
+                style=" top: -4px; left: 50%; transform: translate(-50%, -50%); background-color: black;">
+                ساندویچ و پیتزا:
+                </h2>
+                <div class="row g-0 row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 justify-content-center" id="div-items">
+        
+                    <div class="col p-0 text-white">
+                        <img src="static/images/items/gallary-1.jpg" alt="" class="img-fluid">
+                        <div class="glass-black d-flex flex-column justify-content-end p-2">
+                            <span class="font-15 my-1">صبحانه آفریقایی با ریحان</span>
+                            <span class="font-15 my-1"><i class="bi bi-currency-dollar font-15"></i>190,000 تومان</span>
+
+                            <a href="#" class="my-1 text-decoration-none text-white font-15"><i class="bi bi-eye-fill font-15"></i> جزئیات بیشتر</a>
+                            <span class="font-15 my-1" style="cursor: pointer;"><i class="bi bi-plus-circle font-15"></i> افزودن به سبد خرید</span>
+                            
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
 
 
 
@@ -256,7 +282,6 @@
 
 </body>
     <script src="static/js/scroll.js"></script>
-    <script src="static/js/slider.js"></script>
     <script src="static/js/animation.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </html>

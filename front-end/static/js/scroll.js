@@ -6,3 +6,9 @@ scrollToTop.addEventListener('click', function() {
         behavior: 'smooth'
     });
 });
+
+function scrollToTag(element) {
+    var subject = element.getAttribute('subject');
+    var target = document.querySelector('[target="' + subject + '"]');
+    target.scrollIntoView({ behavior: 'smooth' });
+}

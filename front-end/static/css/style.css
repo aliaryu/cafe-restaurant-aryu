@@ -160,6 +160,14 @@ body {
     background-color: rgba(0, 0, 0, 0.514);
 }
 
+.glass-black {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.363);
+}
+
 #background-aboutus {
     background-image: url("../images/background-aboutus.jpg");
     background-position: center top;
