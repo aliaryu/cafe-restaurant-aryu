@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 
     # INTERNAL APPS
     "app_account.apps.AppAccountConfig",
-    "app_item.apps.AppHomeConfig",
+    "app_home.apps.AppHomeConfig",
     "app_item.apps.AppItemConfig",
 ]
 
@@ -128,3 +128,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = "account.User"
