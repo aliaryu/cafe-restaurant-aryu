@@ -10,10 +10,10 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, password=None, **extra_fields):
+    def create_superuser(self, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
-        return self.create_user(email, password, **extra_fields)
+        return self.create_user(**extra_fields)
     
 
 class User(AbstractUser):
@@ -24,7 +24,8 @@ class User(AbstractUser):
         unique=True,
         verbose_name="ایمیل",
     )
-    phone = models.PositiveBigIntegerField(
+    phone = models.CharField(
+        max_length=11,
         unique=True,
         verbose_name="تلفن همراه",
     )
