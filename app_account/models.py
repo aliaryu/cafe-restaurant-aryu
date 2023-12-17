@@ -36,8 +36,8 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name="تاریخ عضویت",
     )
 
-    groups = models.ManyToManyField(Group, related_name='custom_user_set', blank=True)
-    user_permissions = models.ManyToManyField(Permission, related_name='custom_user_set', blank=True)
+    groups = models.ManyToManyField(Group, related_name='user_set', blank=True)
+    user_permissions = models.ManyToManyField(Permission, related_name='user_set', blank=True)
 
     USERNAME_FIELD = "email"
 
