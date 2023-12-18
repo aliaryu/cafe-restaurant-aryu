@@ -1,16 +1,15 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth import get_user_model
-from .models import Role, Staff
+from .models import User, Role, Staff
 
 
 class StaffInline(admin.StackedInline):
     model = Staff
 
 
-@admin.register(get_user_model())
+@admin.register(User)
 class UserAdmin(UserAdmin):
-    model         = get_user_model()
+    model         = User
     inlines       = (StaffInline,)
     ordering      = ("email",)
     search_fields = ("email", "last_name", "phone")
@@ -18,7 +17,8 @@ class UserAdmin(UserAdmin):
     fieldsets     = (
         ("اطلاعات یکتا",     {"fields": ("email", "phone")}),
         ("اطلاعات فردی",     {"fields": ("first_name", "last_name", "address")}),
-        ("دسترسی ها",       {"fields": ("is_active", "is_staff", "is_superuser")}),
+        ("سطح دسترسی",      {"fields": ("is_active", "is_staff", "is_superuser")}),
+        ("گروه - اجازه ها", {"fields": ("groups", "user_permissions")}),
         ("تاریخ های مرتبط", {"fields": ("last_login", "date_joined")}),
     )
     readonly_fields = ("last_login", "date_joined")
