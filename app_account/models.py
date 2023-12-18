@@ -65,3 +65,11 @@ class Role(models.Model):
         decimal_places = 2,
         verbose_name   = "حقوق",
     )
+
+    class Meta:
+        verbose_name = "مسئولیت"
+        verbose_name_plural = "مسئولیت ها"
+
+    def __str__(self):
+        return str(self.role_name)
+
