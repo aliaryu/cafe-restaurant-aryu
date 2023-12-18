@@ -73,3 +73,23 @@ class Role(models.Model):
     def __str__(self):
         return str(self.role_name)
 
+
+class Staff(models.Model):
+    user = models.OneToOneField(
+        to           = "User",
+        on_delete    = models.CASCADE,
+        verbose_name = "ایمیل",
+    )
+    role = models.OneToOneField(
+        to           = "Role",
+        on_delete    = models.SET_NULL,
+        null         = True,
+        verbose_name = "مسئولیت",
+    )
+
+    class Meta:
+        verbose_name = "کارمند"
+        verbose_name_plural = "کارمند ها"
+
+    def __str__(self):
+        return str(self.user.email)
