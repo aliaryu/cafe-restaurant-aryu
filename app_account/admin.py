@@ -30,5 +30,19 @@ class UserAdmin(UserAdmin):
     )
 
 
-admin.site.register(Role)
+@admin.register(Role)
+class RoleAdmin(admin.ModelAdmin):
+    model         = Role
+    search_fields = ("role_name",)
+    list_display  = ("role_name", "salary")
+    fieldsets     = (
+        ("اطلاعات مسئولیت", {"fields": ("role_name", "salary")}),
+    )
+    add_fieldsets = (
+        ("اطلاعات مسئولیت", {"fields": ("role_name", "salary")}),
+    )
+
+
+
+
 admin.site.register(Staff)
