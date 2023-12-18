@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import  BaseUserManager, AbstractUser
+from .validators import phone_numeric_validator, phone_format_validator, min_length_validator
 
 
 class UserManager(BaseUserManager):
@@ -20,18 +21,25 @@ class User(AbstractUser):
     username = None
 
     email = models.EmailField(
-        max_length=255,
-        unique=True,
-        verbose_name="ایمیل",
+        max_length   = 255,
+        unique       = True,
+        verbose_name = "ایمیل",
     )
     phone = models.CharField(
-        max_length=11,
-        unique=True,
-        verbose_name="تلفن همراه",
+        max_length = 11,
+        unique     = True,
+        validators = [
+            phone_numeric_validator,
+            phone_format_validator,
+        ],
+        verbose_name = "شماره تلفن",
     )
     address = models.CharField(
-        max_length=255,
-        verbose_name="آدرس",
+        max_length = 255,
+        validators = [
+            min_length_validator,
+        ],
+        verbose_name = "آدرس",
     )
 
     objects = UserManager()
