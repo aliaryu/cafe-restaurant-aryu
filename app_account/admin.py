@@ -4,26 +4,28 @@ from django.contrib.auth import get_user_model
 from .models import Role, Staff
 
 
+@admin.register(get_user_model())
 class UserAdmin(UserAdmin):
+    model         = get_user_model()
 
-    model = get_user_model()
-    search_fields = ["email"]
-    ordering = ["email"]
-    filter_horizontal = []
-
-    fieldsets = (
-        (None, {'fields': ('email', 'password')}),
-        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser')}),
-        ('Important dates', {'fields': ('last_login',)}),
+    ordering      = ("email",)
+    search_fields = ("email", "last_name", "phone")
+    list_display  = ("email", "phone", "first_name", "last_name", "is_staff")
+    fieldsets     = (
+        ("اطلاعات یکتا",     {"fields": ("email", "phone")}),
+        ("اطلاعات فردی",     {"fields": ("first_name", "last_name", "address")}),
+        ("دسترسی ها",       {"fields": ("is_active", "is_staff", "is_superuser")}),
+        ("تاریخ های مرتبط", {"fields": ("last_login", "date_joined")}),
     )
-    add_fieldsets = (
-        (None, {
-            'classes': ('wide',),
-            'fields': ('email', 'phone', 'password1', 'password2'),
-        }),
+    readonly_fields = ("last_login", "date_joined")
+    add_fieldsets   = (
+        ("اطلاعات یکتا", {"fields": ("email", "phone"),}),
+        ("اطلاعات فردی", {"fields": ("first_name", "last_name", "address")}),
+        ("دسترسی ها",   {"fields": ("is_active", "is_staff", "is_superuser")}),
+        ("رمز عبور",    {"fields": ("password1", "password2"),}),
     )
 
-admin.site.register(get_user_model(), UserAdmin)
+# admin.site.register(get_user_model(), UserAdmin)
 
 admin.site.register(Role)
 admin.site.register(Staff)

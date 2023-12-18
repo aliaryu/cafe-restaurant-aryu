@@ -78,7 +78,7 @@ class Staff(models.Model):
     user = models.OneToOneField(
         to           = "User",
         on_delete    = models.CASCADE,
-        verbose_name = "ایمیل",
+        verbose_name = "کاربر",
     )
     role = models.OneToOneField(
         to           = "Role",
