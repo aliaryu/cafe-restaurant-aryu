@@ -80,7 +80,7 @@ class Staff(models.Model):
         on_delete    = models.CASCADE,
         verbose_name = "کاربر",
     )
-    role = models.OneToOneField(
+    role = models.ForeignKey(
         to           = "Role",
         on_delete    = models.SET_NULL,
         null         = True,
