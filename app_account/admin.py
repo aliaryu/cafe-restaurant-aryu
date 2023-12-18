@@ -4,10 +4,14 @@ from django.contrib.auth import get_user_model
 from .models import Role, Staff
 
 
+class StaffInline(admin.StackedInline):
+    model = Staff
+
+
 @admin.register(get_user_model())
 class UserAdmin(UserAdmin):
     model         = get_user_model()
-
+    inlines       = (StaffInline,)
     ordering      = ("email",)
     search_fields = ("email", "last_name", "phone")
     list_display  = ("email", "phone", "first_name", "last_name", "is_staff")
@@ -25,7 +29,6 @@ class UserAdmin(UserAdmin):
         ("رمز عبور",    {"fields": ("password1", "password2"),}),
     )
 
-# admin.site.register(get_user_model(), UserAdmin)
 
 admin.site.register(Role)
 admin.site.register(Staff)
