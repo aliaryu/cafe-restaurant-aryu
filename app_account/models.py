@@ -53,3 +53,15 @@ class User(AbstractUser):
 
     def __str__(self):
         return str(self.email)
+
+
+class Role(models.Model):
+    role_name = models.CharField(
+        max_length   = 255,
+        verbose_name = "مسئولیت",
+    )
+    salary = models.DecimalField(
+        max_digits     = 10,
+        decimal_places = 2,
+        verbose_name   = "حقوق",
+    )
