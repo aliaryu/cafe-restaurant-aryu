@@ -25,13 +25,16 @@ class OrderAdmin(admin.ModelAdmin):
     def get_readonly_fields(self, request, obj=None):
         if not obj:
             return ("date_time", "get_user_fullname", "get_user_phone", "get_user_address", "get_total_cost")
+        else:
+            if request.user.is_superuser:
+                return ("date_time", "get_user_fullname", "get_user_phone", "get_user_address", "get_total_cost")
         return super().get_readonly_fields(request, obj)
     
     def get_queryset(self, request):
         if request.user.is_superuser:
             return super().get_queryset(request)
         elif request.user.is_staff:
-            return super().get_queryset(request).filter(in_process=False)
+            return super().get_queryset(request).filter(in_process=False, is_complete=False)
         
     def save_model(self, request, obj, form, change):
         if obj.in_process:
