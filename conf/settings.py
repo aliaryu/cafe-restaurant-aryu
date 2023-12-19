@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "app_account.apps.AppAccountConfig",
     "app_home.apps.AppHomeConfig",
     "app_item.apps.AppItemConfig",
+    "app_order.apps.AppOrderConfig",
 ]
 
 MIDDLEWARE = [
