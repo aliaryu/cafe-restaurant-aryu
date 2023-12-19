@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 class Order(models.Model):
     item = models.ManyToManyField(
         to           = "app_item.Item",
+         through     = "OrderItem",
         verbose_name = "آیتم ها"
     )
     user = models.ForeignKey(
@@ -26,10 +27,12 @@ class Order(models.Model):
         verbose_name = "تاریخ و زمان"
     )
     in_process  = models.BooleanField(
-        default = False
+        default      = False,
+        verbose_name = "در حال انجام"
     )
     is_complete = models.BooleanField(
-        default = False
+        default = False,
+        verbose_name = "تکمیل شده"
     )
 
     class Meta:
@@ -37,6 +40,27 @@ class Order(models.Model):
         verbose_name_plural = "سفارشات"
 
     def __str__(self):
-        return f'سفارش شماره "{self.id}"'
+        return f"سفارش شماره  [ {self.id} ]"
 
 
+class OrderItem(models.Model):
+    order = models.ForeignKey(
+        to           = "Order",
+        on_delete    = models.CASCADE,
+        verbose_name = "سفارش"
+    )
+    item = models.ForeignKey(
+        to           = "app_item.Item",
+        on_delete    = models.CASCADE,
+        verbose_name = "آیتم"
+    )
+    count = models.PositiveIntegerField(
+        verbose_name = "تعداد"
+    )
+
+    class Meta:
+        verbose_name        = "آیتم سفارش شده"
+        verbose_name_plural = "آیتم های سفارش شده"
+
+    def __str__(self):
+        return f"آیتم [ {self.item} ] تعداد: {self.count}"
