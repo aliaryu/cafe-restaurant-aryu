@@ -1,7 +1,4 @@
-from typing import Any
 from django.contrib import admin
-from django.db.models.query import QuerySet
-from django.http.request import HttpRequest
 from .models import Order, OrderItem
 
 
@@ -23,7 +20,7 @@ class OrderAdmin(admin.ModelAdmin):
         ("اطلاعات مشتری", {"fields": ("user", "get_user_fullname", "get_user_phone", "get_user_address")}),
         ("اطلاعات سفارش", {"fields": ("staff", "date_time", "in_process", "is_complete", "get_total_cost")}),
     )
-    readonly_fields = ("date_time", "user", "get_user_fullname", "get_user_phone", "get_user_address", "get_total_cost")
+    readonly_fields = ("date_time","staff", "user", "get_user_fullname", "get_user_phone", "get_user_address", "get_total_cost")
 
     def get_readonly_fields(self, request, obj=None):
         if not obj:
@@ -36,6 +33,15 @@ class OrderAdmin(admin.ModelAdmin):
         elif request.user.is_staff:
             return super().get_queryset(request).filter(in_process=False)
         
+    def save_model(self, request, obj, form, change):
+        if obj.in_process:
+            if request.user.is_superuser:
+                pass
+            elif request.user.is_staff:
+                obj.staff = request.user.staff
+        obj.save()
+        super().save_model(request, obj, form, change)
+
 
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):
