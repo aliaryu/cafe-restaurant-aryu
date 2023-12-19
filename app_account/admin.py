@@ -4,8 +4,8 @@ from .models import User, Role, Staff
 
 
 class StaffInline(admin.StackedInline):
-    model = Staff
-    verbose_name= "اطلاعات کارمند"
+    model        = Staff
+    verbose_name = "اطلاعات کارمند"
 
 
 @admin.register(User)
