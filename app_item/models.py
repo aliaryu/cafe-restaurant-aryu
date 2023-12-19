@@ -55,6 +55,13 @@ class Item(models.Model):
         upload_to    = "item_images/",
         verbose_name = "تصویر"
     )
+
+    class Meta:
+        verbose_name        = "آیتم"
+        verbose_name_plural = "آیتم ها"
+
+    def __str__(self):
+        return str(self.item_name)
     
 
 class ItemComment(models.Model):
@@ -78,3 +85,10 @@ class ItemComment(models.Model):
         on_delete    = models.CASCADE,
         verbose_name = "آیتم",
     )
+
+    class Meta:
+        verbose_name        = "نظر"
+        verbose_name_plural = "نظر ها"
+
+    def __str__(self):
+        return str(self.user.get_full_name())
