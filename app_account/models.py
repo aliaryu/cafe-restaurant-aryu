@@ -58,6 +58,7 @@ class User(AbstractUser):
 class Role(models.Model):
     role_name = models.CharField(
         max_length   = 255,
+        unique       = True,
         verbose_name = "مسئولیت",
     )
     salary = models.DecimalField(
