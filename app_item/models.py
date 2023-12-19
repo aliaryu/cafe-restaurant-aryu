@@ -34,8 +34,7 @@ class Item(models.Model):
         unique       = True,
         verbose_name = "آیتم"
     )
-    description = models.CharField(
-        max_length   = 255,
+    description = models.TextField(
         verbose_name = "توضیحات",
     )
     category  = models.ForeignKey(
@@ -58,4 +57,24 @@ class Item(models.Model):
     )
     
 
-
+class ItemComment(models.Model):
+    message = models.TextField(
+        verbose_name = "پیام"
+    )
+    date_time = models.DateTimeField(
+        auto_now_add = True,
+        verbose_name = "تاریخ و زمان"
+    )
+    answer = models.TextField(
+        verbose_name = "پاسخ"
+    )
+    user = models.ForeignKey(
+        to           = "app_account.User",
+        on_delete    = models.CASCADE,
+        verbose_name = "کاربر",
+    )
+    item = models.ForeignKey(
+        to           = "Item",
+        on_delete    = models.CASCADE,
+        verbose_name = "آیتم",
+    )
