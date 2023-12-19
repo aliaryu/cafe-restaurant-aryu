@@ -71,6 +71,18 @@ class OrderItem(models.Model):
         verbose_name = "تعداد"
     )
 
+    def clean(self):
+        super().clean()
+        updated_count = self.item.count - self.count
+        if updated_count < 0:
+            raise ValidationError({"count": "تعداد سفارش بیشتر از موجودی موجود است."})
+
+    def save(self, *args, **kwargs):
+        updated_count = self.item.count - self.count
+        self.item.count = updated_count
+        self.item.save()
+        super().save(*args, **kwargs)
+
     class Meta:
         verbose_name        = "آیتم سفارش شده"
         verbose_name_plural = "آیتم های سفارش شده"
