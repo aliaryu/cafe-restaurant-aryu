@@ -1,4 +1,7 @@
+from typing import Any
 from django.contrib import admin
+from django.db.models.query import QuerySet
+from django.http.request import HttpRequest
 from .models import Order, OrderItem
 
 
@@ -26,7 +29,13 @@ class OrderAdmin(admin.ModelAdmin):
         if not obj:
             return ("date_time", "get_user_fullname", "get_user_phone", "get_user_address", "get_total_cost")
         return super().get_readonly_fields(request, obj)
-
+    
+    def get_queryset(self, request):
+        if request.user.is_superuser:
+            return super().get_queryset(request)
+        elif request.user.is_staff:
+            return super().get_queryset(request).filter(in_process=False)
+        
 
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):

@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 class Order(models.Model):
     item = models.ManyToManyField(
         to           = "app_item.Item",
-         through     = "OrderItem",
+        through      = "OrderItem",
         verbose_name = "آیتم ها"
     )
     user = models.ForeignKey(
