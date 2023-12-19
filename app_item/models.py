@@ -72,7 +72,11 @@ class ItemComment(models.Model):
         auto_now_add = True,
         verbose_name = "تاریخ و زمان"
     )
+    approve = models.BooleanField(
+        default = False
+    )
     answer = models.TextField(
+        blank        = True,
         verbose_name = "پاسخ"
     )
     user = models.ForeignKey(
@@ -88,7 +92,7 @@ class ItemComment(models.Model):
 
     class Meta:
         verbose_name        = "نظر"
-        verbose_name_plural = "نظر ها"
+        verbose_name_plural = "نظرات"
 
     def __str__(self):
         return str(self.user.get_full_name())
