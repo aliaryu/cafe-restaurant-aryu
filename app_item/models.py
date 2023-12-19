@@ -68,7 +68,7 @@ class Item(models.Model):
         verbose_name_plural = "آیتم ها"
 
     def __str__(self):
-        return str(self.item_name)
+        return f"{self.item_name} - موجودی: {self.count}"
     
 
 class ItemComment(models.Model):

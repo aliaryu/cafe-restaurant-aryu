@@ -5,13 +5,7 @@ from .models import Order, OrderItem
 class OrderItemInline(admin.TabularInline):
     model           = OrderItem
     extra           = 0
-    fields          = ("item", "available", "count",)
-    readonly_fields = ("available",)
-
-    def available(self, obj):
-        return obj.item.count
-    
-    available.short_description = "موجودی"
+    fields          = ("item", "count",)
 
 
 @admin.register(Order)
@@ -19,7 +13,7 @@ class OrderAdmin(admin.ModelAdmin):
     model           = Order
     inlines         = (OrderItemInline,)
     ordering        = ("-is_complete", "date_time",)
-    search_fields   = ("pk", "user__first_name", "user__last_name", "user__phone")
+    search_fields   = ("pk", "user__last_name", "user__phone", "get_user_fullname")
     list_display    = ("__str__", "user", "get_user_fullname", "date_time", "in_process", "is_complete", "staff")
     fieldsets       = (
         ("اطلاعات مشتری", {"fields": ("user", "get_user_fullname", "get_user_phone", "get_user_address")}),
@@ -29,16 +23,22 @@ class OrderAdmin(admin.ModelAdmin):
 
     def get_readonly_fields(self, request, obj=None):
         if not obj:
-            return ["date_time", "get_user_fullname", "get_user_phone", "get_user_address"]
+            return ("date_time", "get_user_fullname", "get_user_phone", "get_user_address")
         return super().get_readonly_fields(request, obj)
 
 
-
-
-
-
-
-
-
-
-admin.site.register(OrderItem)
+@admin.register(OrderItem)
+class OrderItemAdmin(admin.ModelAdmin):
+    model           = OrderItem
+    ordering        = ("-order__date_time",)
+    search_fields   = ("order__id",)
+    list_display    = ("item", "order", "get_order_datetime", "count")
+    fieldsets       = (
+        ("اطلاعات آیتم سفارش شده", {"fields": ("order", "item", "get_order_datetime", "count")}),
+    )
+    readonly_fields = ("order", "item", "get_order_datetime", "count")
+    
+    def get_readonly_fields(self, request, obj=None):
+        if not obj:
+            return ("get_order_datetime",)
+        return super().get_readonly_fields(request, obj)

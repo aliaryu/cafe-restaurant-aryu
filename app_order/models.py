@@ -89,3 +89,8 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f"آیتم [ {self.item} ] تعداد: {self.count}"
+
+    def get_order_datetime(self):
+        return self.order.date_time
+    
+    get_order_datetime.short_description = "تاریخ و زمان"
