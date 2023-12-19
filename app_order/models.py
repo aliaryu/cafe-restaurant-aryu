@@ -51,9 +51,13 @@ class Order(models.Model):
     def get_user_address(self):
         return f"{self.user.address}"
     
+    def get_total_cost(self):
+        return sum(order_item.item.price * order_item.count for order_item in self.orderitem_set.all())
+    
     get_user_fullname.short_description = "نام و نام خانوادگی"
     get_user_phone.short_description    = "شماره تلفن"
     get_user_address.short_description  = "آدرس"
+    get_total_cost.short_description    = "قیمت نهایی"
 
 
 class OrderItem(models.Model):
@@ -93,4 +97,8 @@ class OrderItem(models.Model):
     def get_order_datetime(self):
         return self.order.date_time
     
+    def get_item_price(self):
+        return self.item.price
+    
     get_order_datetime.short_description = "تاریخ و زمان"
+    get_item_price.short_description     = "قیمت هر آیتم"
