@@ -3,8 +3,15 @@ from .models import Order, OrderItem
 
 
 class OrderItemInline(admin.TabularInline):
-    model = OrderItem
-    extra = 0
+    model           = OrderItem
+    extra           = 0
+    fields          = ("item", "available", "count",)
+    readonly_fields = ("available",)
+
+    def available(self, obj):
+        return obj.item.count
+    
+    available.short_description = "موجودی"
 
 
 @admin.register(Order)
