@@ -56,6 +56,13 @@ class Item(models.Model):
         verbose_name = "تصویر"
     )
 
+    def clean(self):
+        super().clean()
+        if self.image:
+            width, height = self.image.width, self.image.height
+            if width != height:
+                raise ValidationError({"image": "عکس باید مربع باشد. عرض و ارتفاع یکسانی داشته باشد."})
+
     class Meta:
         verbose_name        = "آیتم"
         verbose_name_plural = "آیتم ها"
