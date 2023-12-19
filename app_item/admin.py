@@ -40,11 +40,28 @@ class ItemCommentNotApprovedInline(admin.StackedInline):
     #     return False
 
 
+class ItemCommentApprovedInline(admin.StackedInline):
+    model               = ItemComment
+    verbose_name        = "نظر"
+    verbose_name_plural = "نظرات تایید شده"
+    classes             = ('collapse',)
+    readonly_fields     = ("user", "date_time")
+    fieldsets           = (
+        (None, {"fields": ("message", "approve", "answer", "user", "date_time")}),
+    )
+    extra = 0
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).filter(approve=True)
+    
+    # def has_add_permission(self, request, obj=None):
+    #     return False
+
 
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
     model           = Item
-    inlines         = (ItemCommentNotApprovedInline,)
+    inlines         = (ItemCommentNotApprovedInline, ItemCommentApprovedInline)
     list_display    = ("item_name", "price", "count", "display_image")
     readonly_fields = ("display_image",)
     fieldsets       = (
