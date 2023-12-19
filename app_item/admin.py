@@ -17,7 +17,7 @@ class CategoryAdmin(admin.ModelAdmin):
     )
 
     def display_image(self, obj):
-        return format_html('<img src="{}" width="50" height="50" style="background-color: #121212;"/>'.format(obj.image.url))
+        return format_html('<img src="{}" height="50" style="background-color: #121212;"/>'.format(obj.image.url))
 
     display_image.short_description = "تصویر موجود"
 
@@ -70,7 +70,7 @@ class ItemAdmin(admin.ModelAdmin):
     )
 
     def display_image(self, obj):
-        return format_html('<img src="{}" width="50" height="50" style="background-color: #121212;"/>'.format(obj.image.url))
+        return format_html('<img src="{}" height="50" style="background-color: #121212;"/>'.format(obj.image.url))
 
     display_image.short_description = "تصویر موجود"
 
