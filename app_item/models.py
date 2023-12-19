@@ -9,14 +9,15 @@ class Category(models.Model):
     )
     image = models.ImageField(
         upload_to    = "category_images/",
-        verbose_name = "عکس"
+        verbose_name = "تصویر"
     )
 
     def clean(self):
         super().clean()
-        width, height = self.image.width, self.image.height
-        if width != height:
-            raise ValidationError({"image": "عکس باید مربع باشد. عرض و ارتفاع یکسانی داشته باشد."})
+        if self.image:
+            width, height = self.image.width, self.image.height
+            if width != height:
+                raise ValidationError({"image": "عکس باید مربع باشد. عرض و ارتفاع یکسانی داشته باشد."})
 
     class Meta:
         verbose_name        = "دسته بندی"
