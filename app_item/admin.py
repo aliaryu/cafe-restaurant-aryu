@@ -36,8 +36,8 @@ class ItemCommentNotApprovedInline(admin.StackedInline):
     def get_queryset(self, request):
         return super().get_queryset(request).filter(approve=False)
     
-    # def has_add_permission(self, request, obj=None):
-    #     return False
+    def has_add_permission(self, request, obj=None):
+        return False
 
 
 class ItemCommentApprovedInline(admin.StackedInline):
@@ -54,8 +54,8 @@ class ItemCommentApprovedInline(admin.StackedInline):
     def get_queryset(self, request):
         return super().get_queryset(request).filter(approve=True)
     
-    # def has_add_permission(self, request, obj=None):
-    #     return False
+    def has_add_permission(self, request, obj=None):
+        return False
 
 
 @admin.register(Item)
@@ -75,4 +75,17 @@ class ItemAdmin(admin.ModelAdmin):
     display_image.short_description = "تصویر موجود"
 
 
-admin.site.register(ItemComment)
+@admin.register(ItemComment)
+class ItemCommentAdmin(admin.ModelAdmin):
+    model           = ItemComment
+    list_display    = ("user", "item", "date_time","approve")
+    readonly_fields = ("user", "item", "date_time")
+    fieldsets       = (
+        ("اطلاعات نظر", {"fields": ("user", "item", "date_time")}),
+        ("پیام و پاسخ", {"fields": ("message", "answer", "approve")}),
+    )
+
+    def get_readonly_fields(self, request, obj=None):
+        if not obj:
+            return ["date_time"]
+        return super().get_readonly_fields(request, obj)
