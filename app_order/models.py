@@ -41,6 +41,19 @@ class Order(models.Model):
 
     def __str__(self):
         return f"سفارش شماره  [ {self.id} ]"
+    
+    def get_user_fullname(self):
+        return f"{self.user.get_full_name()}"
+    
+    def get_user_phone(self):
+        return f"{self.user.phone}"
+    
+    def get_user_address(self):
+        return f"{self.user.address}"
+    
+    get_user_fullname.short_description = "نام و نام خانوادگی"
+    get_user_phone.short_description    = "شماره تلفن"
+    get_user_address.short_description  = "آدرس"
 
 
 class OrderItem(models.Model):
