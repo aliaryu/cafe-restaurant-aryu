@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 
 
 class Category(models.Model):
@@ -11,13 +12,18 @@ class Category(models.Model):
         verbose_name = "عکس"
     )
 
+    def clean(self):
+        super().clean()
+        width, height = self.image.width, self.image.height
+        if width != height:
+            raise ValidationError({"image": "عکس باید مربع باشد. عرض و ارتفاع یکسانی داشته باشد."})
+
     class Meta:
         verbose_name        = "دسته بندی"
         verbose_name_plural = "دسته بندی ها"
 
     def __str__(self):
         return str(self.category_name)
-
 
 
 
