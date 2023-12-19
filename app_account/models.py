@@ -48,7 +48,7 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ["phone", "first_name", "last_name"]
 
     class Meta:
-        verbose_name = "کاربر"
+        verbose_name        = "کاربر"
         verbose_name_plural = "کاربران"
 
     def __str__(self):
@@ -67,7 +67,7 @@ class Role(models.Model):
     )
 
     class Meta:
-        verbose_name = "مسئولیت"
+        verbose_name        = "مسئولیت"
         verbose_name_plural = "مسئولیت ها"
 
     def __str__(self):
@@ -88,7 +88,7 @@ class Staff(models.Model):
     )
 
     class Meta:
-        verbose_name = "کارمند"
+        verbose_name        = "کارمند"
         verbose_name_plural = "کارمند ها"
 
     def __str__(self):
