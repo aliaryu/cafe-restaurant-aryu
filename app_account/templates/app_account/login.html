@@ -1,0 +1,48 @@
+{% extends "core.html" %}
+{% load static %}
+
+{% block all %}
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="py-5 px-3 px-sm-4 px-md-5 custom-border rounded" id="background-login">
+        <div class="py-5 px-1 px-sm-4 px-md-5">
+
+            <h3 class="text-white f-sayeh mb-3 d-flex justify-content-center">کافه رستوران آریو <i id="logo"></i></h1>
+            <form action="" method="post" class="row g-2" style="max-width: 800px;">
+
+                {% if form.errors %}
+                    <div class="alert alert-danger" style="background-color: transparent;">
+                        <strong class="text-danger">خطا(ها):</strong>
+                        <ul>
+                        {% for error in form.errors.values %}
+                            <li class="font-17 fw-bold text-danger">{{ error.0 }}</li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+
+                {% csrf_token %}
+                {{ form.username }}
+                {{ form.password }}
+
+                <button type="submit" class="d-flex justify-content-center align-items-center form-control bg-transparent text-white font-17 fw-bold">
+                    ورود
+                    <i class="bi bi-box-arrow-in-left font-17 mx-1"></i>
+                </button>
+                <p class="text-white font-17 text-center">
+                    اکانت ندارید؟
+                    <a href="#" class="text-white font-17">
+                        ثبت نام کنید
+                        <i class="bi bi-person-add"></i>
+                    </a>
+                </p>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock all %}
+
+{% block javascript %}
+<script src="{% static "js/animation.js" %}"></script>
+{% endblock javascript %}
