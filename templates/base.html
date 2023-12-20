@@ -1,20 +1,7 @@
+{% extends "core.html" %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
-
-    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
-    <link rel="stylesheet" href="{% static "css/style.css" %}">
-
-    <link rel="icon" type="image/x-icon" href="{% static "images/icons/coffee-cup-black.png" %}">
-    <title>Cafe Restaurant Aryu</title>
-</head>
-<body>
+{% block all %}
 
     {% comment %} HEADER SITE, NAVS {% endcomment %}
     <div>
@@ -25,7 +12,7 @@
                 <div class="container justify-content-center justify-content-md-between">
 
                     <div>
-                        <a class="navbar-brand btn text-white font-20 rounded-0 m-0 f-calibri border-0" href="login.html">ورود <i class="bi bi-box-arrow-in-left"></i> </a>
+                        <a class="navbar-brand btn text-white font-20 rounded-0 m-0 f-calibri border-0" href="{% url "app_account:login_page" %}">ورود <i class="bi bi-box-arrow-in-left"></i> </a>
                         <a class="navbar-brand btn text-white font-20 rounded-0 m-0 f-calibri border-0" href="signin.html">ثبت نام <i class="bi bi-person-add"></i> </a>
                         <a class="navbar-brand btn text-white font-20 rounded-0 m-0 f-calibri border-0" href="card.html">سبد خرید <i class="bi bi-cart text-white"></i> </a>
 
@@ -141,6 +128,4 @@
         </div>
     </footer>
 
-</body>
-    {% block javascript %}{% endblock javascript %}
-</html>
+{% endblock all %}
