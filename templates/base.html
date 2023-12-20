@@ -39,7 +39,7 @@
             <nav class="navbar navbar-expand-lg bg-opacity-half">
                 <div class="container">
 
-                  <a class="navbar-brand d-flex f-sayeh text-white font-30 pt-3" href="#">کافه رستوران آریو<i id="logo"></i></a>
+                  <a class="navbar-brand d-flex f-sayeh text-white font-30 pt-3" href="{% url "app_home:home_page" %}">کافه رستوران آریو<i id="logo"></i></a>
 
                   <button class="navbar-toggler border-0 delete-outline" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="bi bi-list text-white  fs-4"></i>
@@ -49,7 +49,7 @@
 
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 pe-0 d-flex justify-content-center align-items-center">
                       <li class="nav-item">
-                        <a class="nav-link active text-white " aria-current="true" href="#">صفحه اصلی</a>
+                        <a class="nav-link active text-white " aria-current="true" href="{% url "app_home:home_page" %}">صفحه اصلی</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link active text-white " aria-disabled="true" href="order.html">سفارش آنلاین</a>
