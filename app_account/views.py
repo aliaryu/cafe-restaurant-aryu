@@ -12,6 +12,7 @@ from django.contrib.auth import login, logout
 def is_not_authenticated(user):
     return not user.is_authenticated
 
+
 @method_decorator(user_passes_test(is_not_authenticated, login_url=reverse_lazy("app_home:home_page")), name="dispatch")
 class LoginView(LoginView):
     form_class    = LoginForm
@@ -19,6 +20,7 @@ class LoginView(LoginView):
 
     def get_success_url(self):
         return reverse_lazy("app_home:home_page")
+
 
 @method_decorator(user_passes_test(is_not_authenticated, login_url=reverse_lazy("app_home:home_page")), name="dispatch")
 class SignUpView(CreateView):
