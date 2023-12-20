@@ -10,7 +10,6 @@
 {% endblock sloganp %}
 
 {% block body %}
-
     {% comment %} MENU SECTION {% endcomment %}
     <section id="section-menu" class="container text-white my-5">
 
@@ -80,7 +79,6 @@
         </div>
 
     </section>
-
     {% comment %} ITEM SECTION {% endcomment %}
     <section class="container-fluid text-white mt-5 p-0">
 
@@ -99,9 +97,13 @@
 
         </div>
     </section>
-
     {% include "app_home/includes/aboutus.html" %}
-
     {% include "app_home/includes/contactus.html" %}
-
 {% endblock body %}
+
+{% block javascript %}
+    <script src="{% static "js/scroll.js" %}"></script>
+    <script src="{% static "js/slider.js" %}"></script>
+    <script src="{% static "js/animation.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+{% endblock javascript %}
