@@ -102,3 +102,10 @@ class OrderItem(models.Model):
     
     get_order_datetime.short_description = "تاریخ و زمان"
     get_item_price.short_description     = "قیمت هر آیتم"
+
+
+class OrderStaff(Order):
+    class Meta:
+        proxy               = True
+        verbose_name        = "سفارش من"
+        verbose_name_plural = "سفارشات من"
