@@ -5,12 +5,25 @@
         <div class="col">
             <h2 class="f-sayeh mb-4">راه های ارتباطی با ما:</h2>
             <form action="" method="post">
+
+                {% if form.errors %}
+                    <div class="alert alert-danger" style="background-color: transparent;">
+                        <strong class="text-danger">خطا(ها):</strong>
+                        <ul>
+                        {% for error in form.errors.values %}
+                            <li class="font-17 fw-bold text-danger">{{ error.0 }}</li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+                {% csrf_token %}
                 <div class="d-flex mb-2">
-                    <input type="text" class="col form-control bg-transparent text-white font-17 fw-bold ms-1" placeholder="نام و نام خانوادگی">
-                    <input type="email" class="col form-control bg-transparent text-white font-17 fw-bold me-1" placeholder="ایمیل شما">
+                    {{ form.fullname }}
+                    {{ form.email }}
                 </div>
 
-                <textarea class="form-control bg-transparent text-white font-17 fw-bold" placeholder="متن پیام ..." rows="3"></textarea>
+                {{ form.message }}
                 <button type="submit" class="col form-control bg-transparent text-white font-17 fw-bold mt-2"> ارسال <i class="bi bi-send-check font-17"></i> </button>
 
             </form>

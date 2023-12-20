@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from app_item.models import Category, Item
+from .forms import ReceiveMessageForm
 
 
 class HomeView(TemplateView):
@@ -12,4 +13,5 @@ class HomeView(TemplateView):
         items      = Item.objects.order_by("-like")[:12]
         context["categories"] = categories
         context["items"]      = items
+        context["form"]      = ReceiveMessageForm()
         return context
