@@ -20,22 +20,35 @@
                     </div>
                 {% endif %}
 
-
                 {% csrf_token %}
-                {{ form.username }}
-                {{ form.password }}
+                <div class="d-flex mx-0 px-0">
+                    {{ form.first_name }}
+                    {{ form.last_name }}
+                </div>
+
+                {{ form.email }}
+
+                <div class="d-flex mx-0 px-0">
+                    {{ form.password1 }}
+                    {{ form.password2 }}
+                </div>
+
+                {{ form.address }}
+                {{ form.phone }}
 
                 <button type="submit" class="d-flex justify-content-center align-items-center form-control bg-transparent text-white font-17 fw-bold">
-                    ورود
-                    <i class="bi bi-box-arrow-in-left font-17 mx-1"></i>
+                    ثبت نام
+                    <i class="bi bi-person-add font-17 mx-1"></i>
                 </button>
+
                 <p class="text-white font-17 text-center">
-                    اکانت ندارید؟
-                    <a href="{% url "app_account:signup_page" %}" class="text-white font-17">
-                        ثبت نام کنید
-                        <i class="bi bi-person-add"></i>
+                    اکانت دارید؟
+                    <a href="{% url "app_account:login_page" %}" class="text-white font-17">
+                        وارد شوید
+                        <i class="bi bi-box-arrow-in-left"></i>
                     </a>
                 </p>
+
             </form>
 
         </div>
