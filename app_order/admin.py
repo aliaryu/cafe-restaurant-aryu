@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Order, OrderItem
+from .models import Order, OrderItem, OrderStaff
 
 
 class OrderItemInline(admin.TabularInline):
@@ -42,6 +42,11 @@ class OrderAdmin(admin.ModelAdmin):
                 pass
             elif request.user.is_staff:
                 obj.staff = request.user.staff
+        else:
+            if request.user.is_superuser:
+                pass
+            elif request.user.is_staff:
+                obj.staff = None
         obj.save()
         super().save_model(request, obj, form, change)
 
@@ -61,3 +66,45 @@ class OrderItemAdmin(admin.ModelAdmin):
         if not obj:
             return ("get_order_datetime",)
         return super().get_readonly_fields(request, obj)
+    
+
+@admin.register(OrderStaff)
+class OrderStaffAdmin(admin.ModelAdmin):
+    model           = Order
+    inlines         = (OrderItemInline,)
+    ordering        = ("-date_time", "-is_complete")
+    search_fields   = ("pk", "user__last_name", "user__phone", "get_user_fullname")
+    list_display    = ("__str__", "user", "get_user_fullname", "date_time", "in_process", "is_complete", "staff")
+    fieldsets       = (
+        ("اطلاعات مشتری", {"fields": ("user", "get_user_fullname", "get_user_phone", "get_user_address")}),
+        ("اطلاعات سفارش", {"fields": ("staff", "date_time", "in_process", "is_complete", "get_total_cost")}),
+    )
+    readonly_fields = ("date_time","staff", "user", "get_user_fullname", "get_user_phone", "get_user_address", "get_total_cost")
+
+    def get_readonly_fields(self, request, obj=None):
+        if not obj:
+            return ("date_time", "get_user_fullname", "get_user_phone", "get_user_address", "get_total_cost")
+        else:
+            if request.user.is_superuser:
+                return ("date_time", "get_user_fullname", "get_user_phone", "get_user_address", "get_total_cost")
+        return super().get_readonly_fields(request, obj)
+    
+    def get_queryset(self, request):
+        if request.user.is_superuser:
+            return super().get_queryset(request)
+        elif request.user.is_staff:
+            return super().get_queryset(request).filter(staff=request.user.staff)
+        
+    def save_model(self, request, obj, form, change):
+        if obj.in_process:
+            if request.user.is_superuser:
+                pass
+            elif request.user.is_staff:
+                obj.staff = request.user.staff
+        else:
+            if request.user.is_superuser:
+                pass
+            elif request.user.is_staff:
+                obj.staff = None
+        obj.save()
+        super().save_model(request, obj, form, change)
