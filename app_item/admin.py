@@ -65,7 +65,7 @@ class ItemAdmin(admin.ModelAdmin):
     list_display    = ("item_name", "category", "price", "count", "display_image")
     readonly_fields = ("display_image",)
     fieldsets       = (
-        ("اطلاعات آیتم", {"fields": ("item_name", "price", "count", "description")}),
+        ("اطلاعات آیتم", {"fields": ("item_name", "price", "count", "description", "like")}),
         ("دسته بندی",   {"fields": ("category",)}),
         ("عکس آیتم",    {"fields": ("display_image", "image",)}),
     )

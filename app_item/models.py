@@ -55,6 +55,10 @@ class Item(models.Model):
         upload_to    = "item_images/",
         verbose_name = "تصویر"
     )
+    like = models.PositiveIntegerField(
+        default      = 0,
+        verbose_name = "پسندیدن"
+    )
 
     def clean(self):
         super().clean()
