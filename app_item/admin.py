@@ -62,7 +62,7 @@ class ItemCommentApprovedInline(admin.StackedInline):
 class ItemAdmin(admin.ModelAdmin):
     model           = Item
     inlines         = (ItemCommentNotApprovedInline, ItemCommentApprovedInline)
-    list_display    = ("item_name", "category", "price", "count", "display_image")
+    list_display    = ("item_name", "category", "price", "count", "display_image", "like")
     readonly_fields = ("display_image",)
     fieldsets       = (
         ("اطلاعات آیتم", {"fields": ("item_name", "price", "count", "description", "like")}),

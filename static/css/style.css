@@ -251,3 +251,7 @@ body {
     width: 20px;
     height: 20px;
 }
+
+.filter-b {
+    filter: brightness(0.8);
+}

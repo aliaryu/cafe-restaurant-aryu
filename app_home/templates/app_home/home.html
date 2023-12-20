@@ -81,6 +81,24 @@
 
     </section>
 
+    {% comment %} ITEM SECTION {% endcomment %}
+    <section class="container-fluid text-white mt-5 p-0">
+
+        <h2 class="text-center f-sayeh mb-4">محبوب ترین آیتم ها <i class="bi bi-stars font-30"></i></h2>
+
+        <div class="row g-0 row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 row-cols-xl-6 justify-content-center" id="div-items">
+
+            {% for item in items %}
+                <a class="col p-0 text-white" href="#">
+                    <img src="{{ item.image.url }}" alt="{{ item.item_name }}" class="img-fluid filter-b">
+                    <div class="absolute-items">
+                        <i class="bi bi-eye-fill icon-eye font-30"></i>
+                    </div>
+                </a>
+            {% endfor %}
+
+        </div>
+    </section>
 
 
 
