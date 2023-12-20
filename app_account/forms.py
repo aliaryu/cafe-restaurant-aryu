@@ -12,4 +12,3 @@ class LoginForm(AuthenticationForm):
 
         self.fields["password"].widget.attrs["class"]       = "form-control bg-transparent text-white font-17 fw-bold"
         self.fields["password"].widget.attrs["placeholder"] = "رمز عبور"
-        
