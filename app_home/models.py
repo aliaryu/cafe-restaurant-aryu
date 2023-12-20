@@ -17,6 +17,10 @@ class ReceiveMessage(models.Model):
         auto_now_add = True,
         verbose_name = "تاریخ و زمان"
     )
+    read = models.BooleanField(
+        default      = False,
+        verbose_name = "خوانده شده"
+    )
 
     class Meta:
         verbose_name        = "پیام"
