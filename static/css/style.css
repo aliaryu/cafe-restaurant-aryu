@@ -1,0 +1,253 @@
+@font-face {
+    font-family: "calibri";
+    src: url("../fonts/Calibri.ttf");
+}
+@font-face {
+    font-family: "sayeh";
+    src: url("../fonts/Mj\ Sayeh\ 2.ttf");
+}
+
+:root {
+    --shadow-black: 1px 1px 5px rgb(0, 0, 0);
+}
+  
+* {
+    font-family: "calibri";
+    font-weight: bold;
+    font-size: 20px;
+
+    text-shadow: var(--shadow-black);
+}
+
+body {
+    background-color: black;
+}
+
+
+.font-30 {
+    font-size: 30px;
+}
+
+.font-25 {
+    font-size: 25px;
+}
+
+.font-20 {
+    font-size: 20px;
+}
+
+.font-17 {
+    font-size: 17px;
+}
+
+.font-15 {
+    font-size: 15px;
+}
+
+.f-sayeh {
+    font-family: "sayeh";
+    font-weight: bold;
+    text-shadow: var(--shadow-black);
+}
+
+.f-calibri {
+    font-family: "calibri";
+    font-weight: bold;
+    text-shadow: var(--shadow-black);
+}
+
+#logo {
+    background-image: url("../images/icons/coffee-cup.png");
+    background-position: center center;
+    background-size: cover;              
+    display: inline-block;
+    text-align: center;
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+    position: relative;
+    top: -10px;
+
+    animation: rotate 4s forwards infinite 2s;
+}
+
+@keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    20% {
+        transform: rotate(25deg)
+    }
+    40% {
+        transform: rotate(-5deg);
+    }
+    60% {
+        transform: rotate(0deg);
+    }
+}
+
+.bg-opacity-half {
+    background-color: rgba(255, 255, 255, 0.089);
+}
+
+#header {
+    background-image: url("../images/background-cafe.jpeg");
+    background-position: center top;
+    background-size: cover;
+    background-color: #464646;
+}
+
+.delete-outline:focus {
+    box-shadow: none;
+}
+
+.menu-animation {
+    animation: shake 4.3s forwards infinite;
+}
+
+@keyframes shake {
+    0% {
+      transform: rotate(0deg);
+    }
+    5% {
+        transform: rotate(3deg)
+    }
+    10% {
+        transform: rotate(-6deg);
+    }
+    15% {
+        transform: rotate(0deg);
+    }
+}
+
+.absolute-title {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+}
+
+.absolute-items {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0);
+    transition: 0.3s ease;
+}
+
+#div-items > .col {
+    box-shadow: 0 0 0 1px #5c5c5c;
+    margin: -0.3px;
+    position: relative;
+}
+
+.icon-eye {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.absolute-items:hover > .icon-eye {
+    opacity: 1;
+}
+
+.absolute-items:hover {
+    background-color: rgba(0, 0, 0, 0.514);
+}
+
+.glass-black {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.363);
+}
+
+#background-aboutus {
+    background-image: url("../images/background-aboutus.jpg");
+    background-position: center top;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+}
+
+.background-glass {
+    background-color: rgba(0, 0, 0, 0.76)
+}
+
+.custom-border {
+    border: 1px solid #5c5c5c;
+}
+
+.form-control::placeholder {
+    color: #ffffff;
+}
+
+#map-responsive {
+    position: relative;
+    margin: 0 auto;
+}
+
+#map-responsive iframe {
+    width: 100%;
+    height: 100%;
+}
+
+#address {
+    background-color: rgba(0, 0, 0, 0.753);
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0px 20px;
+}
+
+#background-footer {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../images/gif/augustin-cart-gif-lofi-final.gif");
+    background-position: center top;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+}
+
+#background-login {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../images/plants-background.jpg");
+    background-position: center top;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+    margin: 1px;
+}
+
+.custom-img {
+    max-width: 125px;
+}
+
+.text-no-wrap {
+    white-space: nowrap; left: 50%;
+    transform: translateX(-50%);
+}
+
+#success-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+    width: 200px;
+}
+.replay {
+    background-image: url("../images/replay.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    display: inline-block;
+    margin-left: 5px;
+    transform: translateY(-1px);
+    width: 20px;
+    height: 20px;
+}
