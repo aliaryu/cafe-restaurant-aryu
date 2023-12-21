@@ -1,53 +1,109 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block body %}
-<section class="container-fluid py-5">
-    <div class="container-lg">
-        
-        <section>
-            <div class="container">
-              <div class="row gx-5">
 
-                <!-- IMAGE -->
-                <aside class="col-lg-6 px-2">
-                  <div class=" rounded-4 mb-3 d-flex justify-content-center" style="background-color: #000000;">
-                      <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit custom-border" src="{{ item.image.url }}" />
-                  </div>
-                </aside>
+    {% comment %} ITEM SECTION {% endcomment %}
+    <section class="container-fluid py-5">
+        <div class="container-lg">
+            
+            <section>
+                <div class="container">
+                <div class="row gx-5">
 
-                <main class="col-lg-6 row align-items-center">
-                  <div class="ps-lg-3">
-
-                    <!-- TITLE -->
-                    <h4 class="font-30 text-white fw-bold">{{ item.item_name }}</h4>
-
-                    <!-- INFO -->
-                    <div class="mb-3">
-                      <span class="text-secondary font-25">{{ item.price }}</span>
+                    <!-- IMAGE -->
+                    <aside class="col-lg-6 px-2">
+                    <div class=" rounded-4 mb-3 d-flex justify-content-center" style="background-color: #000000;">
+                        <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit custom-border" src="{{ item.image.url }}" />
                     </div>
-                    
-                    <!-- DESCRIPTION -->
-                    <p class="font-17 text-white">
-                        {{ item.description }}
-                    </p>
-                    
-                    <div class="mb-3">
-                        <span class="text-white font-17">{{ item.like }} نفر این سَم را پسند کرده اند.</span>
+                    </aside>
+
+                    <main class="col-lg-6 row align-items-center">
+                    <div class="ps-lg-3">
+
+                        <!-- TITLE -->
+                        <h4 class="font-30 text-white fw-bold">{{ item.item_name }}</h4>
+
+                        <!-- INFO -->
+                        <div class="mb-3">
+                        <span class="text-secondary font-25">{{ item.price }}</span>
+                        </div>
+                        
+                        <!-- DESCRIPTION -->
+                        <p class="font-17 text-white">
+                            {{ item.description }}
+                        </p>
+                        
+                        <div class="mb-3">
+                            <span class="text-white font-17">{{ item.like }} نفر این سَم را پسند کرده اند.</span>
+                        </div>
+                        
+                        <!-- BUTTONS -->
+                        
+                        <span class="btn bg-transparent border f-calibri text-white font-17"
+                        onclick="showSuccess()"> اضافه کردن به سبد خرید <i class="bi bi-cart3"></i> </span>
+                        <a href="{{ item.get_like_url }}" class="btn bg-transparent border f-calibri text-white font-17"> پسندیدن <i class="bi bi-suit-heart"></i> </a>
+
                     </div>
-                    
-                    <!-- BUTTONS -->
-                    
-                    <span class="btn bg-transparent border f-calibri text-white font-17"
-                    onclick="showSuccess()"> اضافه کردن به سبد خرید <i class="bi bi-cart3"></i> </span>
-                    <a href="{{ item.get_like_url }}" class="btn bg-transparent border f-calibri text-white font-17"> پسندیدن <i class="bi bi-suit-heart"></i> </a>
+                    </main>
 
-                  </div>
-                </main>
+                </div>
+                </div>
+            </section>
 
-              </div>
+        </div>
+    </section>
+
+    {% comment %} COMMENT SECTION {% endcomment %}
+    {% if item.itemcomment_set.exists %}
+        <section class="container my-5 text-white px-1">
+
+            <h2 class="text-center f-sayeh mb-4"> نظرات شما <i class="bi bi-chat-dots font-30"></i> </i></h2>
+
+            <!-- CONTAINER COMMENT -->
+            <div class="d-flex justify-content-center">
+
+                <div class="custom-border p-2 w-100" style="max-width: 700px;">
+
+                    {% for cm in item.itemcomment_set.all %}
+                        <div class="mb-2">
+                            {% comment %} COMMENT {% endcomment %}
+                            <div class="custom-border p-2">
+                                <h6 class="f-calibri my-0 font-20">{{ cm.user.get_full_name }}</h6>
+                                <span class="text-secondary font-15 position-relative" style="top: -5px;">{{ cm.date_time }}</span>
+                                <p class="font-15 mt-1 mb-0">{{ cm.message }}</p>
+                            </div>
+                            {% comment %} REPLAY {% endcomment %}
+                            {% if cm.answer %}
+                                <div class="custom-border p-2 me-4" style="margin-top: 1px;">
+                                    <h6 class="f-calibri my-0 font-20">
+                                        <i class="replay"></i>
+                                        کافه آریو:</h6>
+
+                                    <p class="font-15 mt-1 mb-0">{{ cm.answer }}</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+
+                </div>
+                
+
             </div>
-        </section>
 
-    </div>
-</section>
+        </section>
+    {% endif %}
+
+
+
+
+    <div id="success-message"></div>
+
 {% endblock body %}
+
+{% block javascript %}
+    <script src="{% static "js/cart.js" %}"></script>
+    <script src="{% static "js/scroll.js" %}"></script>
+    <script src="{% static "js/animation.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+{% endblock javascript %}
