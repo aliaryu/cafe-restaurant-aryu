@@ -77,6 +77,9 @@ class Item(models.Model):
     
     def get_absolute_url(self):
         return reverse("app_item:item_detail_page", kwargs={"pk": self.pk})
+    
+    def get_like_url(self):
+        return reverse("app_item:item_like_url", kwargs={"pk": self.pk})
 
 
 class ItemComment(models.Model):
