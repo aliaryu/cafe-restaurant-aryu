@@ -47,7 +47,7 @@
                         <!-- BUTTONS -->
                         
                         <span class="btn bg-transparent border f-calibri text-white font-17"
-                        onclick="showSuccess()"> اضافه کردن به سبد خرید <i class="bi bi-cart3"></i> </span>
+                        onclick="showSuccess(); addToCart(this)" item_id="{{ item.id }}"> اضافه کردن به سبد خرید <i class="bi bi-cart3"></i> </span>
                         <a href="{{ item.get_like_url }}" class="btn bg-transparent border f-calibri text-white font-17"> پسندیدن <i class="bi bi-suit-heart"></i> </a>
 
                     </div>
