@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from django.views.generic import DetailView, View
-from .models import Item, ItemComment
+from django.views.generic import DetailView, View, ListView
+from .models import Item, ItemComment, Category
 from django.db.models import F
 from django.db.models import Prefetch
 from .forms import ItemCommentForm
@@ -44,3 +44,12 @@ class ItemLikeView(View):
         item.like = F("like") + 1
         item.save()
         return redirect("app_item:item_detail_page", pk=pk)
+    
+
+class OrderView(ListView):
+    template_name       = 'app_item/order.html'
+    context_object_name = 'categories'
+
+    def get_queryset(self):
+        categories = Category.objects.prefetch_related('item_set')
+        return categories
