@@ -16,7 +16,7 @@
 
         <h2 class="text-center f-sayeh mb-4">آماده پذییرایی از شما هستیم <i class="bi bi-balloon-heart font-30"></i></h2>
 
-        <!-- ITEM DIV -->
+        <!-- CATEGORIES DIV -->
         <div class="mx-3 mx-sm-4 mx-md-4 mx-lg-5 mx-xl-5 mx-xxl-5">
             <div class="mx-3 mx-sm-4 mx-md-4 mx-lg-5 mx-xl-5 mx-xxl-5">
                 <div class="mx-2 mx-sm-3 mx-md-4 mx-lg-4 mx-xl-4 mx-xxl-5">
@@ -28,7 +28,7 @@
 
                                 {% for cat in categories %}
                                     <div class="col mb-3">
-                                        <a class="card h-100 text-decoration-none bg-black" href="#">
+                                        <a class="card h-100 text-decoration-none bg-black" href="{% url "app_item:order_page" %}#{{ cat.id }}">
                             
                                             <img class="card-img-top rounded-circle bg-black" src="{{ cat.image.url }}" alt="...">
                                             <div class="card-body p-1">

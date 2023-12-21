@@ -79,7 +79,7 @@
 
         {% for cat in categories %}
             <div class="custom-border border-start-0 border-end-0 border-bottom-0 py-3 position-relative">
-                <h2 class="font-25 f-calibri text-center position-absolute" target="{{ cat.id }}"
+                <h2 class="font-25 f-calibri text-center position-absolute" target="{{ cat.id }}" id="{{ cat.id }}"
                 style=" top: -4px; left: 50%; transform: translate(-50%, -50%); background-color: black;">
                 <a href="#{{cat.id}}" class="text-decoration-none text-white font-25 f-calibri">{{ cat.category_name }}</a>
                 </h2>
