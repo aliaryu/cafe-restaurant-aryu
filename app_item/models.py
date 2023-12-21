@@ -76,7 +76,7 @@ class Item(models.Model):
         return f"{self.item_name} - موجودی: {self.count}"
     
     def get_absolute_url(self):
-        return reverse("item_detail_page", kwargs={"pk": self.pk})
+        return reverse("app_item:item_detail_page", kwargs={"pk": self.pk})
 
 
 class ItemComment(models.Model):
