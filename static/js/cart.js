@@ -17,3 +17,32 @@ function removeSuccess() {
     var successMessageDiv = document.getElementById("success-message");
     successMessageDiv.removeChild(successMessageDiv.firstChild)
 }
+
+function addToCart(element){
+    var itemId = element.getAttribute("item_id");
+    var cart = JSON.parse(getCookie("cart")) || {};
+    cart[itemId] = (cart[itemId] || 0) + 1;
+    setCookie("cart", JSON.stringify(cart), 1);
+}
+function getCookie(name) {
+    var cookieName = name + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var cookieArray = decodedCookie.split(';');
+    
+    for(var i = 0; i < cookieArray.length; i++) {
+        var cookie = cookieArray[i].trim();
+        if (cookie.indexOf(cookieName) == 0) {
+            return cookie.substring(cookieName.length, cookie.length);
+        }
+    }
+    return null;
+}
+function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
