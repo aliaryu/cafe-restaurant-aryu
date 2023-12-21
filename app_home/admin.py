@@ -12,3 +12,4 @@ class UserAdmin(admin.ModelAdmin):
         ("اطلاعات پیام",    {"fields": ("message", "date_time")}),
         ("وضعیت خواندن",   {"fields": ("read", )}),
     )
+    readonly_fields = ("date_time", )
