@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block sloganh1 %}
+    آریو منو
+{% endblock sloganh1 %}
+
+{% block body %}
+
+    {% comment %} ORDER SECTION {% endcomment %}
+    <section id="section-menu" class="container text-white my-5">
+
+        <!-- ITEM DIV -->
+        <div class="mx-3 mx-sm-4 mx-md-4 mx-lg-5 mx-xl-5 mx-xxl-5">
+            <div class="mx-3 mx-sm-4 mx-md-4 mx-lg-5 mx-xl-5 mx-xxl-5">
+                <div class="mx-2 mx-sm-3 mx-md-4 mx-lg-4 mx-xl-4 mx-xxl-5">
+                    <div class="mx-2 mx-sm-3 mx-md-4 mx-lg-4 mx-xl-4 mx-xxl-5">
+                        <div class="mx-1 mx-sm-1 mx-md-1 mx-lg-1 mx-xl-1 mx-xxl-5">
+
+                            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+                                {% for cat in categories %}
+                                    <div class="col mb-3">
+                                        <a class="card h-100 text-decoration-none bg-black" href="#"
+                                        onclick="scrollToTag(this); return false;" cat_id="{{ cat.id }}">
+                            
+                                            <img class="card-img-top rounded-circle bg-black" src="{{ cat.image.url }}" alt="{{ cat.category_name }}">
+                                            <div class="card-body p-1">
+                                                <div class="text-center">
+                                                    <h5 class="fw-bolder text-white font-20">{{ cat.category_name }}</h5>
+                                                </div>
+                                            </div>
+                            
+                                        </a>
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DELIVERY DIV -->
+        <div class="mx-3 mx-sm-4 mx-md-4 mx-lg-5 mx-xl-5 mx-xxl-5">
+            <div class="mx-3 mx-sm-4 mx-md-4 mx-lg-5 mx-xl-5 mx-xxl-5">
+                <div class="mx-2 mx-sm-3 mx-md-4 mx-lg-4 mx-xl-4 mx-xxl-5">
+                    <div class="mx-2 mx-sm-3 mx-md-4 mx-lg-4 mx-xl-4 mx-xxl-5">
+                        <div class="mx-1 mx-sm-1 mx-md-1 mx-lg-1 mx-xl-1 mx-xxl-5">
+
+                            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+                                <div class="col mb-3">
+                                    <a class="card h-100 text-decoration-none bg-black" href="card.html">
+                        
+                                        <img class="card-img-top bg-black" src="{% static "images/menu/take-away.png" %}" alt="delivery">
+                                        <div class="card-body p-1">
+                                            <div class="text-center">
+                                                <h5 class="fw-bolder text-white font-20 position-absolute text-no-wrap">مشاهده سبد خرید</h5>
+                                            </div>
+                                        </div>
+                        
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    {% comment %} ITEM SECTION {% endcomment %}
+    <section class="container-fluid text-white mt-5 p-0">
+
+        {% for cat in categories %}
+            <div class="custom-border border-start-0 border-end-0 border-bottom-0 py-3 position-relative">
+                <h2 class="font-25 f-calibri text-center position-absolute" target="{{ cat.id }}"
+                style=" top: -4px; left: 50%; transform: translate(-50%, -50%); background-color: black;">
+                <a href="#{{cat.id}}" class="text-decoration-none text-white font-25 f-calibri">{{ cat.category_name }}</a>
+                </h2>
+
+                <div class="container overflow-hidden">
+                    
+                    <div class="row row-cols-1 row-sm-lg-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 justify-content-center">
+
+                        {% for item in cat.item_set.all %}
+                            <div class="col px-1 py-1">
+                                <div class="custom-border p-2 rounded d-flex">
+                                    <img class="img-fluid w-25 rounded" src="{{ item.image.url }}" alt="{{ item.item_name }}">
+                                    <div class="w-100 me-2 d-flex flex-column justify-content-between">
+                                        <h6 class="f-calibri font-20">{{ item.item_name }}</h6>
+                                        <small class="font-15">{{ item.price }}</small>
+                                    </div>
+                                    <div class=" me-2 d-flex flex-column justify-content-between align-items-end">
+                                        <a href="{{ item.get_absolute_url }}" class="text-white text-decoration-none"><i class="bi bi-eye d-flex"></i></a>
+                                        <i class="bi bi-plus-circle d-flex" style="cursor: pointer;" onclick="showSuccess()"></i>
+                                    </div>
+
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+            </div>
+        {% endfor %}
+
+    </section>
+
+    <div id="success-message"></div>
+
+{% endblock body %}
+
+{% block javascript %}
+    <script src="{% static "js/cart.js" %}"></script>
+    <script src="{% static "js/scroll.js" %}"></script>
+    <script src="{% static "js/animation.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+{% endblock javascript %}
