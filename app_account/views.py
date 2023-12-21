@@ -19,7 +19,7 @@ class LoginView(LoginView):
     template_name = "app_account/login.html"
 
     def get_success_url(self):
-        return reverse_lazy("app_home:home_page")
+        return self.request.GET.get("next", reverse_lazy("app_home:home_page"))
 
 
 @method_decorator(user_passes_test(is_not_authenticated, login_url=reverse_lazy("app_home:home_page")), name="dispatch")

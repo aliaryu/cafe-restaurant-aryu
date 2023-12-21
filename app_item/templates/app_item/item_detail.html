@@ -109,7 +109,7 @@
                 </form>
             {% else %}
                 <a class="col form-control bg-transparent text-white font-17 fw-bold ms-1 text-center d-block text-decoration-none"
-                href={% url "app_account:login_page" %}>
+                href={% url "app_account:login_page" %}?next={{ request.path }}>
                     ابتدا وارد حساب کاربری خود شوید.
                 </a>
             {% endif %}
