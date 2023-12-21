@@ -63,7 +63,7 @@
             <!-- CONTAINER COMMENT -->
             <div class="d-flex justify-content-center">
 
-                <div class="custom-border p-2 w-100" style="max-width: 700px;">
+                <div class="custom-border p-2 pb-0 w-100" style="max-width: 700px;">
 
                     {% for cm in item.itemcomment_set.all %}
                         <div class="mb-2">
@@ -94,8 +94,27 @@
         </section>
     {% endif %}
 
+    {% comment %} FORM COMMENT SECTION {% endcomment %}
+    <section class="text-white d-flex justify-content-center">
+        <div class="w-100 px-1" style="max-width: 700px;">
+            <h2 class="f-sayeh mb-4 text-center">نظر شما چیه؟</h2>
+            {% if user.is_authenticated %}
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form.message }}
 
-
+                    <button type="submit" class="col form-control bg-transparent text-white font-17 fw-bold mt-2">
+                         ارسال 
+                        <i class="bi bi-send-check font-17"></i> </button>
+                </form>
+            {% else %}
+                <a class="col form-control bg-transparent text-white font-17 fw-bold ms-1 text-center d-block text-decoration-none"
+                href={% url "app_account:login_page" %}>
+                    ابتدا وارد حساب کاربری خود شوید.
+                </a>
+            {% endif %}
+        </div>
+    </section>
 
     <div id="success-message"></div>
 
