@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -74,6 +75,9 @@ class Item(models.Model):
     def __str__(self):
         return f"{self.item_name} - موجودی: {self.count}"
     
+    def get_absolute_url(self):
+        return reverse("item_detail_page", kwargs={"pk": self.pk})
+
 
 class ItemComment(models.Model):
     message = models.TextField(
