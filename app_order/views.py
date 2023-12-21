@@ -1,3 +1,22 @@
 from django.shortcuts import render
+from django.views.generic import ListView
+from app_item.models import Item
+import json
 
-# Create your views here.
+
+class CartView(ListView):
+    template_name       = "app_order/cart.html"
+    context_object_name = "items"
+
+    def get_queryset(self):
+        cookies = self.request.COOKIES.get("cart")
+        cookies = json.loads(cookies) if isinstance(cookies, str) else {}
+        items   = Item.objects.filter(id__in=list(cookies.keys()))
+        return items
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        cookies = self.request.COOKIES.get("cart")
+        cookies = json.loads(cookies) if isinstance(cookies, str) else {}
+        context["cart_items"] = cookies
+        return context
