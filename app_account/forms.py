@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
 from django.contrib.auth import get_user_model
 
 
@@ -68,3 +68,42 @@ class SignUpForm(UserCreationForm):
         })
 
         self.fields["email"].widget.attrs.pop("autofocus")
+
+
+class CustomUserChangeForm(UserChangeForm):
+    class Meta:
+        model  = get_user_model()
+        fields = ('first_name', 'last_name', 'email', 'phone', 'address')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["first_name"].widget.attrs.update({
+            "class": "form-control bg-transparent text-white font-17 fw-bold ms-1",
+            "placeholder": "نام",
+            "required": "",
+        })
+        self.fields["last_name"].widget.attrs.update({
+            "class": "form-control bg-transparent text-white font-17 fw-bold me-1",
+            "placeholder": "نام خانوادگی",
+            "required": "",
+        })
+        self.fields["email"].widget.attrs.update({
+            "class": "form-control bg-transparent text-white font-17 fw-bold",
+            "placeholder": "ایمیل",
+            "required": "",
+            "type": "email",
+        })
+        self.fields["address"] = forms.CharField(
+            widget=forms.Textarea(attrs={
+                "class": "form-control bg-transparent text-white font-17 fw-bold",
+                "placeholder": "آدرس ...",
+                "required": "",
+                "rows": 3
+            })
+        )
+        self.fields["phone"].widget.attrs.update({
+            "class": "form-control bg-transparent text-white font-17 fw-bold",
+            "placeholder": "شماره تلفن",
+            "required": "",
+            "type": "tel"
+        })
