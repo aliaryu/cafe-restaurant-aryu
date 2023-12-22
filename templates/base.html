@@ -14,7 +14,7 @@
                     <div>
                         {% if user.is_authenticated %}
                             <a class="navbar-brand btn text-white font-20 rounded-0 m-0 f-calibri border-0" href="{% url "app_account:logout_page" %}">خروج <i class="bi bi-box-arrow-left"></i> </a>
-                            <a class="navbar-brand btn text-white font-20 rounded-0 m-0 f-calibri border-0" href=""> {{ user.get_full_name }} <i class="bi bi-person-circle"></i> </a>
+                            <a class="navbar-brand btn text-white font-20 rounded-0 m-0 f-calibri border-0" href="{% url "app_account:profile_page" %}"> {{ user.get_full_name }} <i class="bi bi-person-circle"></i> </a>
                         {% else %}
                             <a class="navbar-brand btn text-white font-20 rounded-0 m-0 f-calibri border-0" href="{% url "app_account:login_page" %}">ورود <i class="bi bi-box-arrow-in-left"></i> </a>
                             <a class="navbar-brand btn text-white font-20 rounded-0 m-0 f-calibri border-0" href="{% url "app_account:signup_page" %}">ثبت نام <i class="bi bi-person-add"></i> </a>

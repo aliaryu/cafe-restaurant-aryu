@@ -37,7 +37,7 @@ class CartView(ListView):
             items  = Item.objects.filter(id__in=list(cookies.keys()))
             for key, value in cookies.items():
                 OrderItem.objects.create(order=order, item=items.get(id=int(key)), count=int(value))
-            response = redirect("app_home:home_page")
+            response = redirect("app_account:profile_page")
             response.delete_cookie("cart")
             return response
         else:
