@@ -16,7 +16,10 @@ class CartView(ListView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        output  = []
         cookies = self.request.COOKIES.get("cart")
         cookies = json.loads(cookies) if isinstance(cookies, str) else {}
-        context["cart_items"] = cookies
+        for item in context["items"]:
+            output.append([item, cookies[str(item.id)]])
+        context["items"] = output
         return context
