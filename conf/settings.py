@@ -141,3 +141,6 @@ AUTHENTICATION_BACKENDS = ['app_account.backends.EmailOrPhoneModelBackend']
 # MEDIA CONFIGS
 MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL  = "media/"
+
+# LOGIN CONFIGS
+LOGIN_URL = "/account/login/"
