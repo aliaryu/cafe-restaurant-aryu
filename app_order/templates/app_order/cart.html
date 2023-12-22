@@ -63,7 +63,7 @@
                         </div>
                     </div>
 
-                    <a href="order.html" class="d-block text-white font-17 text-center my-4">
+                    <a href="{% url "app_item:order_page" %}" class="d-block text-white font-17 text-center my-4">
                         بازگشت به صفحه سفارش
                     </a>
 
@@ -108,9 +108,6 @@
             parent.setAttribute("count", countInput);
             info()
         }
-
-
-
     </script>
 
 {% endblock body %}
