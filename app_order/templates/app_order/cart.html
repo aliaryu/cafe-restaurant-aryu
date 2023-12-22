@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block sloganh1 %}
+    سبد خرید
+{% endblock sloganh1 %}
+
+{% block body %}
+
+    <!-- SHOPPING CART -->
+    <section class="h-100">
+        <div class="container h-100 pt-5">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-10 p-2 custom-border rounded" id="background-login">
+            
+                    {% for item in items %}
+                        <div class="card rounded-3 mb-4 bg-transparent text-white custom-border">
+                            <div class="card-body p-4">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <div class="col-md-2 col-lg-2 col-xl-2">
+                                <img
+                                    src="{{ item.0.image.url }}"
+                                    class="img-fluid rounded-3 custom-border" alt="{{ item.0.item_name }}">
+                                </div>
+                                <div class="col-md-3 col-lg-3 col-xl-3">
+                                <h4 class="f-calibri font-20 my-2">{{ item.0.item_name }}</h4>
+                                </div>
+                                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                <button class="btn btn-link px-2"
+                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                    <i class="bi bi-dash text-white"></i>
+                                </button>
+                
+                                <input id="form1" min="0" value="{{ item.1 }}" type="number"
+                                    class="form-control form-control-sm bg-transparent text-white" />
+                
+                                <button class="btn btn-link px-2"
+                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                    <i class="bi bi-plus text-white"></i>
+                                </button>
+                                </div>
+                                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                <h5 class="my-2 f-calibri font-20">{{ item.0.price }}</h5>
+                                </div>
+                                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                <button class="text-danger btn" delete_id="{{ item.0.id }}" onclick="deleteCookieItem(this)"><i class="bi bi-x-square-fill"></i></i></button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                    <!-- PAYMENT -->
+                    <div class="card bg-transparent custom-border">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-around mb-3 text-white">
+                                <span>3 آیتم ، تعداد 7</span>
+                                <span>قیمت نهایی 450,000</span>
+                            </div>
+                            <button type="submit" class="w-100 d-flex justify-content-center align-items-center btn btn-outline-light bg-transparent text-white font-20 fw-bold">
+                                پرداخت فاکتور 
+                                <i class="bi bi-credit-card-2-back me-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <a href="order.html" class="d-block text-white font-17 text-center my-4">
+                        بازگشت به صفحه سفارش
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function deleteCookieItem(button) {
+            var deleteId = button.getAttribute("delete_id");
+            var cart = JSON.parse(getCookie("cart")) || {};
+            delete cart[deleteId]
+            setCookie("cart", JSON.stringify(cart), 1);
+
+        }
+    </script>
+
+{% endblock body %}
+
+{% block javascript %}
+    <script src="{% static "js/cart.js" %}"></script>
+    <script src="{% static "js/scroll.js" %}"></script>
+    <script src="{% static "js/animation.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+{% endblock javascript %}
