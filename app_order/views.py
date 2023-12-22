@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from django.views.generic import ListView
+from django.shortcuts import render, redirect
+from django.views.generic import ListView, View
+from django.contrib.auth.mixins import LoginRequiredMixin
 from app_item.models import Item
 import json
 
@@ -23,3 +24,18 @@ class CartView(ListView):
             output.append([item, cookies[str(item.id)]])
         context["items"] = output
         return context
+
+
+class PaymentView(LoginRequiredMixin, View):
+    def get(self, request):
+        cookies = self.request.COOKIES.get("cart")
+        cookies = json.loads(cookies) if isinstance(cookies, str) else {}
+
+        if cookies:
+            
+            return redirect("app_home:home_page")
+        else:
+            return redirect("app_item:order_page")
+
+
+

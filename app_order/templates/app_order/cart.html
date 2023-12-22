@@ -56,8 +56,7 @@
                                     <span id="full_price"></span>
                                 </span>
                             </div>
-                            <form action="" method="get">
-                                {% csrf_token %}
+                            <form action="{% url "app_order:payment_url" %}" method="get">
                                 <button type="submit" class="w-100 d-flex justify-content-center align-items-center btn btn-outline-light bg-transparent text-white font-20 fw-bold">
                                     پرداخت فاکتور 
                                     <i class="bi bi-credit-card-2-back me-1"></i>
