@@ -14,7 +14,8 @@
                 <div class="col-10 p-2 custom-border rounded" id="background-login">
             
                     {% for item in items %}
-                        <div class="card rounded-3 mb-4 bg-transparent text-white custom-border">
+                        <div class="card rounded-3 mb-4 bg-transparent text-white custom-border items" item_id="{{ item.0.id }}"
+                        count="{{ item.1 }}" price="{{ item.0.price }}">
                             <div class="card-body p-4">
                             <div class="row d-flex justify-content-between align-items-center">
                                 <div class="col-md-2 col-lg-2 col-xl-2">
@@ -26,18 +27,10 @@
                                 <h4 class="f-calibri font-20 my-2">{{ item.0.item_name }}</h4>
                                 </div>
                                 <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                <button class="btn btn-link px-2"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                    <i class="bi bi-dash text-white"></i>
-                                </button>
+
+                                <input min="1" value="{{ item.1 }}" type="number" oninput="changeCount(this)"
+                                    class="form-control form-control-sm bg-transparent text-white" item_id_input="{{ item.0.id }}"/>
                 
-                                <input id="form1" min="0" value="{{ item.1 }}" type="number"
-                                    class="form-control form-control-sm bg-transparent text-white" />
-                
-                                <button class="btn btn-link px-2"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                    <i class="bi bi-plus text-white"></i>
-                                </button>
                                 </div>
                                 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                                 <h5 class="my-2 f-calibri font-20">{{ item.0.price }}</h5>
@@ -54,8 +47,14 @@
                     <div class="card bg-transparent custom-border">
                         <div class="card-body">
                             <div class="d-flex justify-content-around mb-3 text-white">
-                                <span>3 آیتم ، تعداد 7</span>
-                                <span>قیمت نهایی 450,000</span>
+                                <span>
+                                    <span id="item_count"></span> آیتم -
+                                    تعداد <span id="item_number_count"></span>
+                                </span>
+                                <span>
+                                    قیمت نهایی
+                                    <span id="full_price"></span>
+                                </span>
                             </div>
                             <button type="submit" class="w-100 d-flex justify-content-center align-items-center btn btn-outline-light bg-transparent text-white font-20 fw-bold">
                                 پرداخت فاکتور 
@@ -76,11 +75,42 @@
     <script>
         function deleteCookieItem(button) {
             var deleteId = button.getAttribute("delete_id");
+            var deleteDivId = document.querySelector('[item_id="' + deleteId + '"]');
             var cart = JSON.parse(getCookie("cart")) || {};
-            delete cart[deleteId]
+            delete cart[deleteId];
             setCookie("cart", JSON.stringify(cart), 1);
-
+            deleteDivId.remove();
+            info()
         }
+
+        function info(){
+            var items = document.getElementsByClassName("items");
+            var countItem = items.length;
+            var countItemNumber = 0;
+            var totalPrice = 0;
+            Array.from(items).forEach(item => {
+                var itemPrice = item.getAttribute("price");
+                var itemCount = item.getAttribute("count");
+                countItemNumber += parseInt(itemCount);
+                totalPrice += parseFloat(itemPrice) * parseInt(itemCount);
+            });
+            document.getElementById("item_count").textContent = countItem; 
+            document.getElementById("item_number_count").textContent = countItemNumber;
+            document.getElementById("full_price").textContent = totalPrice.toFixed(2);;
+        }
+        info()
+
+        function changeCount(input){
+            var countInput = input.value;
+            var idItem = input.getAttribute("item_id_input");
+            var parent = document.querySelector('[item_id="' + idItem + '"]');
+            console.log(parent);
+            parent.setAttribute("count", countInput);
+            info()
+        }
+
+
+
     </script>
 
 {% endblock body %}
