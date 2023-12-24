@@ -255,3 +255,9 @@ body {
 .filter-b {
     filter: brightness(0.8);
 }
+
+table th,
+table td {
+    font-size: 15px;
+    background-color: transparent !important;
+}
