@@ -40,8 +40,42 @@
         </div>
     </div>
 
-    <div class="d-flex justify-content-center align-items-center my-container my-5">
-        
+    <div class="row row-cols-1 row-sm-lg-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-2 justify-content-center">
+
+        {% for order in orders %}
+            <div class="col px-1 py-1 custom-border">
+                <div class="text-white f-sayeh mb-3 d-flex justify-content-around">
+                    <span>
+                        {{ order.id }}
+                    </span>
+                    <span>
+                        {{ order.date_time }}
+                    </span>
+                    <span>
+                        {% if in_process %}
+                            در حال انجام
+                        {% else %}
+                            در حال بررسی
+                        {% endif %}
+                    </span>
+                    <span>
+                        {% if is_complete %}
+                            تکمیل شده
+                        {% else %}
+                            تکمیل نشده
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        {% endfor %}
+
     </div>
 
 {% endblock body %}
+
+{% block javascript %}
+    <script src="{% static "js/cart.js" %}"></script>
+    <script src="{% static "js/scroll.js" %}"></script>
+    <script src="{% static "js/animation.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+{% endblock javascript %}
