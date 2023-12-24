@@ -107,8 +107,10 @@
             var countInput = input.value;
             var idItem = input.getAttribute("item_id_input");
             var parent = document.querySelector('[item_id="' + idItem + '"]');
-            console.log(parent);
+            var cart   = JSON.parse(getCookie("cart")) || {};
             parent.setAttribute("count", countInput);
+            cart[idItem] = countInput
+            setCookie("cart", JSON.stringify(cart), 1)
             info()
         }
     </script>
